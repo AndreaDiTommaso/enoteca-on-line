@@ -12,6 +12,8 @@ CREATE TABLE Utente (
  cap varchar (5) NOT NULL,
  tipo char,
  immagine blob,
+ codice_attivazione int,
+ stato bool,
  PRIMARY KEY (id)
  );
  CREATE TABLE Vino (
