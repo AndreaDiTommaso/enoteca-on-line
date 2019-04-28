@@ -22,7 +22,9 @@
 
     <!-- A. HEADER -->         
     <div class="corner-page-top">
+		
 		<ul class="menuTop">
+			<li class="pagetitle">{$content_title}</li>
 			{section name=i loop=$tasti_laterali}
 			<li>
 			<a href="{$tasti_laterali[i].link}">{$tasti_laterali[i].testo}</a>
@@ -41,10 +43,7 @@
       <div class="header-top">
         
         <!-- A.1 SITENAME -->      
-        <a class="sitelogo" href="index.php" title="Home"></a>
-        <div class="sitename">
-          <h1><a href="index.php" title="Home">ENOTECA ON-LINE</a></h1>
-        </div>
+        <a class="sitelogo" href="index.php" title="Enoteca Online"></a>
    
     
       <!-- A.4 BREADCRUMB and SEARCHFORM -->
@@ -86,7 +85,7 @@
   
     <!-- C. MAIN SECTION -->      
     <div class="main">
-      <h1 class="pagetitle">{$content_title}</h1>
+      
 
       <!-- C.1 CONTENT -->
       <div class="content">

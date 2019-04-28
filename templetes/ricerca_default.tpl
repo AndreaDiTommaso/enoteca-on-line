@@ -7,8 +7,8 @@
             {if $smarty.section.i.iteration % 2 == 1}
             <div class="corner-content-2col-top"></div>
             <div class="content-2col-box">
-              <h1><a href="?controller=ricerca&task=dettagli&id_prodotto={$dati[i].ISBN}">{$dati[i].titolo}</a></h1>
-              <p><img height="200" src="copertine/{$dati[i].copertina}" alt="{$dati[i].titolo}" title="{$dati[i].titolo}"}</p>
+              <h1><a href="?controller=ricerca&task=dettagli&id_vino={$dati[i].ISBN}">{$dati[i].nome}</a></h1>
+              <p><img height="200" src="copertine/{$dati[i].immagine}" alt="{$dati[i].nome}" title="{$dati[i].nome}"}</p>
                   {assign var="somma" value="`0`"}
                   {assign var="max" value="`0`"}
               {section name=j loop=$dati[i].commento}
@@ -23,7 +23,7 @@
 				</ul>
 			</p>
               <form action="index.php" method="post">
-              <input type="hidden" name="id_prodotto" value="{$dati[i].ISBN}" />
+              <input type="hidden" name="id_vino" value="{$dati[i].ISBN}" />
               <input id="button" type="submit" name="task" value="Aggiungi al Carrello" />
               <input type="hidden" name="controller" value="ordine" />
               </form>
@@ -40,8 +40,8 @@
             {if $smarty.section.i.iteration % 2 == 0}
             <div class="corner-content-2col-top"></div>
             <div class="content-2col-box">
-              <h1><a href="?controller=ricerca&task=dettagli&id_prodotto={$dati[i].ISBN}">{$dati[i].titolo}</a></h1>
-              <p><img height="200" src="copertine/{$dati[i].copertina}" alt="{$dati[i].titolo}" title="{$dati[i].titolo}"</p>
+              <h1><a href="?controller=ricerca&task=dettagli&id_vino={$dati[i].ISBN}">{$dati[i].nome}</a></h1>
+              <p><img height="200" src="copertine/{$dati[i].immagine}" alt="{$dati[i].nome}" title="{$dati[i].nome}"</p>
                   {assign var="somma" value="`0`"}
                   {assign var="max" value="`0`"}
           {section name=k loop=$dati[i].commento}
@@ -56,7 +56,7 @@
 				</ul>
 			</p>
               <form action="index.php" method="post">
-              <input type="hidden" name="id_prodotto" value="{$dati[i].ISBN}" />
+              <input type="hidden" name="id_vino" value="{$dati[i].ISBN}" />
               <input id="button" type="submit" name="task" value="Aggiungi al Carrello" />
               <input type="hidden" name="controller" value="ordine" />
               </form>
@@ -67,13 +67,24 @@
             {/if}
           </div>
        </div>
-        {if $pagine!=''}
-        <div class="corner-content-1col-top"></div>
+		
+		{if $task=='lista'}
+			{if $pagine!=''}
+			<div class="corner-content-1col-top"></div>
+			<div class="content-1col-nobox">
+				<h2 class="pages">
+			   {section name=pages loop=$pagine}
+				   <a href="index.php?controller=ricerca&task={$task}{if $parametri!=''}&{$parametri}{/if}&page={$smarty.section.pages.iteration-1}">{$smarty.section.pages.iteration}</a>
+			   {/section}
+			   </h2>
+			</div>
+			<div class="corner-content-1col-bottom"></div>
+			{/if}
+		{else}
+		<div class="corner-content-1col-top"></div>
         <div class="content-1col-nobox">
             <h2 class="pages">
-           {section name=pages loop=$pagine}
-               <a href="index.php?controller=ricerca&task={$task}{if $parametri!=''}&{$parametri}{/if}&page={$smarty.section.pages.iteration-1}">{$smarty.section.pages.iteration}</a>
-           {/section}
+				<a href="index.php?controller=ricerca&task=lista">Vai al catalogo</a>
            </h2>
         </div>
         <div class="corner-content-1col-bottom"></div>

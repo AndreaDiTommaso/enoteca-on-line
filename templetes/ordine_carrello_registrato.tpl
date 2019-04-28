@@ -4,7 +4,7 @@
           {if $dati!= false}
           <form action="index.php" method="post">
           <table id="carrello">
-            <tr><th class="top" scope="col">Titolo</th>
+            <tr style="width:978px"><th class="top" scope="col">Nome</th>
                 <th class="top" scope="col">Quantit&agrave;</th>
                 <th class="top" scope="col">Prezzo</th>
             {section name=i loop=$dati.oggetti}
@@ -13,10 +13,12 @@
                 <td id="numero">{$dati.oggetti[i].prezzo|string_format:"%.2f"}</td>
             {/section}
             <tr><th scope="row" id="numero" colspan="1"></th><th scope="col">Totale:{$dati.totale|string_format:"%.2f"}<th></th></tr>
-            <tr><td colspan="1"></td><td colspan="2"><input id="button" type="submit" name="task" value="Svuota" /><input id="button" type="submit" name="task" value="Aggiorna Carrello" /></td></tr>
-          </table>
-          <input type="hidden" name="controller" value="ordine" />
+            <tr><td></td><td colspan="5"><input id="button" type="submit" name="task" value="Svuota" /><input id="button" type="submit" name="task" value="Aggiorna Carrello" />
+                      <input type="hidden" name="controller" value="ordine" />
           </form>
+<form action="index.php" method="post"><input id="button" type="submit" name="task" value="Ordina" /><input type="hidden" name="controller" value="ordine" /></form>
+</td></tr>
+          </table>
           {else}
             <p>Il carrello &egrave; vuoto.</p>
           {/if}
