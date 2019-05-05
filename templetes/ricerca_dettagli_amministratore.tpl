@@ -1,4 +1,4 @@
-        <div class="corner-content-1col-top"></div>
+ <div class="corner-content-1col-top"></div>
         <div class="content-1col-nobox">
           <h1>{$dati.nome}</h1>
           <h5>{$dati.autore}</h5>
@@ -35,9 +35,15 @@
             </form>
           </div>
           {section name=j loop=$dati.commento}
+		
           <blockquote>
             <p>{$dati.commento[j].testo}</p>
             <p>voto: {$dati.commento[j].voto}</p>
+			<form action="index.php" method="post">
+			  <input id="button" type="submit" name="task" value="Elimina" /> 
+			  <input type="hidden" name="controller" value="ricerca"  />
+			  <input type="hidden" name="task" value="elimina"  />
+             </form>
           </blockquote>
           {/section}
         </div>

@@ -1,0 +1,31 @@
+		<a id="anchor-contact-1"></a>
+        <div class="corner-content-1col-top"></div>        
+        <div class="content-1col-nobox">
+          <h1 class="contact">Modulo aggiornamento catalogo</h1>
+          <div class="contactform">
+            <form method="post" action="index.php" name="task" value="lista">
+              <fieldset><legend>&nbsp;AGGIUNGI PRODOTTO&nbsp;</legend>
+                <p><label for="ISBN" class="left">Isbn:</label>
+                   <input type="text" name="ISBN" id="ISBN" class="field" value="" tabindex="5" /></p>
+                <p><label for="nome" class="left">Nome:</label>
+                   <input type="text" name="nome" id="nome" class="field" value="" tabindex="6" /></p>
+                <p><label for="proprietario" class="left">Proprietario:</label>
+                   <input type="text" name="proprietario" id="proprietario" class="field" value="" tabindex="7" /></p>
+				<p><label for="prezzo" class="left">Prezzo:</label>
+                   <input type="text" name="prezzo" id="prezzo" class="field" value="" tabindex="8" /></p>
+                <p><label for="descrizione" class="left">Descrizione:</label>
+                   <input type="text" name="descrizione" id="descrizione" class="field" value="" tabindex="20" /></p>
+                <p><label for="categoria" class="left">Categoria:</label>
+                   <input type="text" name="categoria" id="categoria" class="field" value="" tabindex="10" /></p>
+                <p><label for="immagine" class="left">Immagine:</label>
+                   <input type="text" name="immagine" id="immagine" class="field" value="" tabindex="11" /></p>
+                <p><label for="gradazione" class="left">Gradazione:</label>
+                   <input type="text" name="gradazione" id="gradazione" class="field" value="" tabindex="12" /></p>
+                <input type="hidden" name="controller" value="ricerca" />
+                <input type="hidden" name="task" value="salva" />
+                <p><input type="submit" name="submit" id="submit_1" class="button" value="Aggiungi" tabindex="15" /></p>
+               </fieldset>
+            </form>
+          </div>
+        </div>
+        <div class="corner-content-1col-bottom"></div> 
