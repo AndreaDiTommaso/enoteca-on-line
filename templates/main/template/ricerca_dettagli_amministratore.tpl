@@ -42,7 +42,8 @@
 			<form action="index.php" method="post">
 			  <input id="button" type="submit" name="task" value="Elimina" /> 
 			  <input type="hidden" name="controller" value="ricerca"  />
-			  <input type="hidden" name="task" value="elimina"  />
+			   <input type="hidden" name="commento" value="{$dati.commento[j].id}" />
+			  <input type="hidden" name="task" value="eliminaCommento"  />
              </form>
           </blockquote>
           {/section}

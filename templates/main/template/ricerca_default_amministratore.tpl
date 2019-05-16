@@ -1,4 +1,11 @@
-          <div class="content-1col-box">
+		  <div class="content-1col-box">
+            <form method="post" action="index.php">
+				<input id="button" type="submit" name="task" value="+ Aggiungi prodotto al catalogo" />
+				<input type="hidden" name="controller" value="ricerca"  />
+				<input type="hidden" name="task" value="modulo"  />
+		  </form>
+		  </div>
+		  <div class="content-1col-box">
           <!-- Subcell LEFT -->
           <div class="content-2col-box-leftcolumn">
             {if $dati != false}
@@ -26,9 +33,19 @@
               <input type="hidden" name="id_vino" value="{$dati[i].ISBN}" />
               <input id="button" type="submit" name="task" value="Aggiungi al Carrello" />
               <input type="hidden" name="controller" value="ordine" />
+			  </form>
+			  <form action="index.php" method="post">
+			  <input id="button" type="submit" name="task" value="Elimina" /> 
+			  <input type="hidden" name="controller" value="ricerca"  />
+              <input type="hidden" name="id_vino" value="{$dati[i].ISBN}" />
+			  <input type="hidden" name="task" value="eliminaProdotto"  />
               </form>
             </div>
-            <div class="corner-content-2col-bottom"></div>
+            <div class="corner-content-2col-bottom">
+			
+			
+		  
+		    </div>
             {/if}
             {/section}
             {/if}
@@ -59,6 +76,12 @@
               <input type="hidden" name="id_vino" value="{$dati[i].ISBN}" />
               <input id="button" type="submit" name="task" value="Aggiungi al Carrello" />
               <input type="hidden" name="controller" value="ordine" />
+			  </form>
+			  <form action="index.php" method="post">
+			  <input id="button" type="submit" name="task" value="Elimina" /> 
+			  <input type="hidden" name="controller" value="ricerca"  />
+              <input type="hidden" name="id_vino" value="{$dati[i].ISBN}" />
+			  <input type="hidden" name="task" value="eliminaProdotto"  />
               </form>
             </div>
             <div class="corner-content-2col-bottom"></div>
@@ -70,7 +93,6 @@
 		
 		{if $task=='lista'}
 			{if $pagine!=''}
-			<div class="corner-content-1col-top"></div>
 			<div class="content-1col-nobox">
 				<h2 class="pages">
 			   {section name=pages loop=$pagine}

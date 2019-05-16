@@ -77,8 +77,8 @@ CREATE TABLE `utente` (
   `via` varchar(100) DEFAULT NULL,
   `codice_attivazione` varchar(20) DEFAULT NULL,
   `stato` enum('non_attivo','attivo') DEFAULT NULL,
-  `citta` varchar(20) DEFAULT NULL,
-  `CAP` varchar(5) DEFAULT NULL,
+  `citta` varchar(20) DEFAULT NULL ,
+ `immagine` varchar(100) DEFAULT NULL, `CAP` varchar(5) DEFAULT NULL,
 tipo char,  PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 

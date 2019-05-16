@@ -1,9 +1,11 @@
+<?php /* Smarty version 2.6.26, created on 2019-05-15 21:23:06
+         compiled from registrazione_modulo.tpl */ ?>
         <a id="anchor-contact-1"></a>
         <div class="corner-content-1col-top"></div>        
         <div class="content-1col-nobox">
           <h1 class="contact">Modulo di registrazione</h1>
           <div class="contactform">
-            <form method="post" action="index.php">
+            <form method="post" action="index.php" name="task" value="lista" enctype="multipart/form-data">
               <fieldset><legend>&nbsp;CREDENZIALI DI ACCESSO&nbsp;</legend>
                 <p><label for="username" class="left">Username:</label>
                    <input type="text" name="username" id="username" class="field" value="" tabindex="5" /></p>
@@ -23,6 +25,8 @@
                    <input type="text" name="citta" id="citta" class="field" value="" tabindex="12" /></p>
                 <p><label for="email" class="left">Email:</label>
                    <input type="text" name="email" id="email" class="field" value="" tabindex="14" /></p>
+				<p><label for="immagine" class="left">Immagine:</label>
+                   <input type="file" name="immagine" id="immagine" class="field" tabindex="11" /></p>
                 <input type="hidden" name="controller" value="registrazione" />
                 <input type="hidden" name="task" value="salva" />
                 <p><input type="submit" name="submit" id="submit_1" class="button" value="Registrati" tabindex="15" /></p>

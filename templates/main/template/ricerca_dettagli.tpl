@@ -11,17 +11,10 @@
           {/if}
           <p class="details">
 			<ul>
-				<li><b>Media Voti:</b> <a href="#">{if $max>0}{$somma/$max|string_format:"%.2f"}{else}-{/if}</a> </li>
 				<li>Categoria: <a href="#">{$dati.categoria}</a> </li>
 				<li>Prezzo: <a href="#">{$dati.prezzo}</a> </li>
 			</ul>
 		</p>
-          {section name=j loop=$dati.commento}
-          <h5 class="line">{$dati.commento[j].autore_username}</h5>
-          <blockquote>
-            <p>{$dati.commento[j].commento}</p>
-            <p>voto: {$dati.commento[j].votazione}</p>
-          </blockquote>
-          {/section}
+         
         </div>
         <div class="corner-content-1col-bottom"></div>
