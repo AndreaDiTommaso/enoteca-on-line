@@ -5,69 +5,6 @@ USE enotecaonline;
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
-
-
-CREATE TABLE `cartacredito` (
-  `numero` varchar(16) NOT NULL,
-  `nome_titolare` varchar(40) DEFAULT NULL,
-  `cognome_titolare` varchar(40) DEFAULT NULL,
-  `data_scadenza` date DEFAULT NULL,
-  `ccv` varchar(3) DEFAULT NULL,
-  PRIMARY KEY (`numero`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-
-CREATE TABLE `commento` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `vinoISBN` varchar(13) DEFAULT NULL,
-  `testo` varchar(1024) DEFAULT NULL,
-  `voto` float NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `Commento` (`vinoISBN`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-
-CREATE TABLE `vino` (
-  `ISBN` varchar(13) NOT NULL,
-  `nome` varchar(200) DEFAULT NULL,
-  `proprietario` varchar(100) DEFAULT NULL,
-  `prezzo` float DEFAULT NULL,
-  `descrizione` varchar(2048) DEFAULT NULL,
-  `categoria` varchar(20) DEFAULT NULL,
-  `immagine` varchar(100) DEFAULT NULL,`gradazione` varchar(2),
-  PRIMARY KEY (`ISBN`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
-
-CREATE TABLE `ordine` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `cartaCreditoNumero` varchar(16) DEFAULT NULL,
-  `utenteusername` varchar(20) DEFAULT NULL,
-  `data` date DEFAULT NULL,
-  `pagato` tinyint(1) NOT NULL,
-  `confermato` tinyint(1) NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `Ordine` (`utenteusername`),
-  KEY `CartaCredito` (`cartaCreditoNumero`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
-
-
-
-CREATE TABLE `ordineitem` (
-  `ID` int(11) NOT NULL AUTO_INCREMENT,
-  `vinoISBN` varchar(13) DEFAULT NULL,
-  `ordineID` int(11) NOT NULL,
-  `quantita` int(2) DEFAULT NULL,
-  PRIMARY KEY (`ID`),
-  KEY `Item` (`ordineID`),
-  KEY `vino` (`vinoISBN`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
-
-
-
 CREATE TABLE `utente` (
   `username` varchar(20) NOT NULL,
   `nome` varchar(40) DEFAULT NULL,
@@ -78,25 +15,94 @@ CREATE TABLE `utente` (
   `codice_attivazione` varchar(20) DEFAULT NULL,
   `stato` enum('non_attivo','attivo') DEFAULT NULL,
   `citta` varchar(20) DEFAULT NULL ,
- `immagine` varchar(100) DEFAULT NULL, `CAP` varchar(5) DEFAULT NULL,
-tipo char,  PRIMARY KEY (`username`)
+  `immagine` varchar(100) DEFAULT NULL, 
+  `CAP` varchar(5) DEFAULT NULL,
+  `tipo` char,  
+   PRIMARY KEY (`username`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `cartacredito` (
+  `numero` varchar(16) NOT NULL,
+  `nome_titolare` varchar(40) DEFAULT NULL,
+  `cognome_titolare` varchar(40) DEFAULT NULL,
+  `utente` varchar(40) DEFAULT NULL,
+  `data_scadenza` date DEFAULT NULL,
+  `ccv` varchar(3) DEFAULT NULL,
+  PRIMARY KEY (`numero`),
+FOREIGN KEY (`utente`) REFERENCES `utente`(`username`)  
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE `vino` (
+  `ISBN` varchar(13) NOT NULL,
+  `nome` varchar(200) DEFAULT NULL,
+  `proprietario` varchar(100) DEFAULT NULL,
+  `utente` varchar(100) DEFAULT NULL,
+  `prezzo` float DEFAULT NULL,
+  `descrizione` varchar(2048) DEFAULT NULL,
+  `categoria` varchar(20) DEFAULT NULL,
+  `immagine` varchar(100) DEFAULT NULL,`gradazione` varchar(2),
+  PRIMARY KEY (`ISBN`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 
+CREATE TABLE `commento` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `vinoISBN` varchar(13) DEFAULT NULL,
+  `testo` varchar(1024) DEFAULT NULL,
+  `voto` float NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`vinoISBN`) REFERENCES `vino`(`ISBN`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 
-INSERT INTO `vino` (`ISBN`, `nome`, `proprietario`, `prezzo`, `descrizione`, `categoria`, `immagine`,`gradazione`) VALUES
-('1', 'MONTEPULCIANO', 'NIRO', 6, 'Vino di colore rosso intenso, profumi di frutta a bacca rossa e note di spezie. Sapore pieno, armonico e giustamente tannico. Si abbina egregiamente a primi di pasta, carni rosse, cacciagione e formaggi stagionati.', 'ROSSO', '01.jpg','12'),
 
-('2', 'TREBBIANO', 'BISANZIO', 6.5, 'Tipico vino bianco abruzzese, di colore giallo paglierino tenue, delicatamente profumato, piacevolmente sapido e armonico al palato, si abbina bene con pesce, carni bianche e formaggi. Ottimo aperitivo, può essere gustato in qualsiasi momento della giornata.', 'BIANCO', '02.jpg','11'),
 
-('3', 'PECORINO', 'NIRO', 6, 'Bouquet fresco, con note di frutta tropicale e ananas, che si fondono con sentori di salvia e acacia.Sapore pieno, di buona struttura e di lunga persistenza con note minerali. Ottimo con pesce, carni bianche e formaggi. Eccellente come aperitivo.', 'BIANCO', '03.jpg','11'),
 
-('4', 'PASSERINA', 'NIRO', 7, 'VStupendo colore dai riflessi dorati, ottenuto dal vitigno Passerina a bacca bianca. Bouquet delicato e al contempo complesso, note di fiori bianchi si legano a sentori agrumati e a sfumature speziate. Sapore fresco e fragrante al palato, si esalta la complessità delle affascinanti sensazioni olfattive tanto da renderlo sorprendentemente persistente. Ottimo da un ricco aperitivo a piatti complessi.', 'BIANCO', '04.jpg','10'),
 
-('5', 'CERASUOLO', 'NIRO', 7, 'Il vino rosato Bisanzio è un Cerasuolo d’Abruzzo ottenuto dalla vinificazione in bianco delle uve rosse.  Di colore rosso ciliegia brillante, un bouquet piacevolmente fruttato, note di “cerasa”, sapore secco, morbido e armonico. Si abbina egregiamente a zuppe di pesce, primi di pasta, arrosti leggeri, formaggi e pizza. ', 'ROSATO', '05.jpg','12'),
+CREATE TABLE `ordine` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `cartacredito` varchar(16) DEFAULT NULL,
+  `utente` varchar(20) DEFAULT NULL,
+  `data` date DEFAULT NULL,
+  `pagato` tinyint(1) NOT NULL,
+  `confermato` tinyint(1),
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (cartacredito) REFERENCES cartacredito(numero),
+  FOREIGN KEY (utente) REFERENCES utente(username)
+ 
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=40 ;
 
-('6', 'ROSSO DI RIGOLE', 'TOMMASELLA', 8, 'Un blend unico ottenuto da Merlot e dall’autoctono friulano Refosco.Vino di colore rosso rubino con sfumature viola, dotato di grande complessità aromatica, dalle eleganti note di frutti di bosco, lampone e leggere sfumature erbacee, tipiche del Merlot delle nostre terre.Il corpo è generoso, ricco, di buona sapidità. Al palato è morbido e persistente, con finale armonico.Si abbina perfettamente a tutti i piatti di carne rossa, costicine di agnello, radicchio di Treviso, brasati e formaggi di media stagionatura.', 'ROSSO', '06.jpg','13'),
-('7', 'MERLOT', 'TOMMASELLA', 10, 'Vino dal colore rosso rubino con riflessi violacei, dalle eleganti note di piccoli frutti rossi delicati, lampone, ribes, viola fresca di campo. Di corpo medio, equilibrato, con tannini piacevolmente vellutati. Il sapore è pieno, fruttato con bella freschezza e morbidezza. Ottimo con carni alla brace, stufati di verdure, primi piatti a base di funghi e formaggi, piatti di pesce saporiti e antipasti all’Italiana.', 'ROSSO', '07.jpg','13');
+
+
+CREATE TABLE `ordineitem` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `vino` varchar(13) DEFAULT NULL,
+  `ordineID` int(11) NOT NULL,
+  `quantita` int(2) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (vino) REFERENCES vino(ISBN),
+  FOREIGN KEY (ordineID) REFERENCES ordine(id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+
+
+
+
+
+
+INSERT INTO `utente` (`username`, `nome`, `cognome`, `password`, `email`, `via`, `codice_attivazione`, `stato`, `citta`, `immagine`, `CAP`, `tipo`) VALUES ('amm', NULL, NULL, 'a', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+INSERT INTO `vino` (`ISBN`, `nome`, `proprietario`, `prezzo`, `descrizione`, `categoria`, `immagine`,`gradazione`,`utente`) VALUES
+('1', 'MONTEPULCIANO', 'NIRO', 6, 'Vino di colore rosso intenso, profumi di frutta a bacca rossa e note di spezie. Sapore pieno, armonico e giustamente tannico. Si abbina egregiamente a primi di pasta, carni rosse, cacciagione e formaggi stagionati.', 'ROSSO', '01.jpg','12','amm'),
+
+('2', 'TREBBIANO', 'BISANZIO', 6.5, 'Tipico vino bianco abruzzese, di colore giallo paglierino tenue, delicatamente profumato, piacevolmente sapido e armonico al palato, si abbina bene con pesce, carni bianche e formaggi. Ottimo aperitivo, può essere gustato in qualsiasi momento della giornata.', 'BIANCO', '02.jpg','11','amm'),
+
+('3', 'PECORINO', 'NIRO', 6, 'Bouquet fresco, con note di frutta tropicale e ananas, che si fondono con sentori di salvia e acacia.Sapore pieno, di buona struttura e di lunga persistenza con note minerali. Ottimo con pesce, carni bianche e formaggi. Eccellente come aperitivo.', 'BIANCO', '03.jpg','11','amm'),
+
+('4', 'PASSERINA', 'NIRO', 7, 'VStupendo colore dai riflessi dorati, ottenuto dal vitigno Passerina a bacca bianca. Bouquet delicato e al contempo complesso, note di fiori bianchi si legano a sentori agrumati e a sfumature speziate. Sapore fresco e fragrante al palato, si esalta la complessità delle affascinanti sensazioni olfattive tanto da renderlo sorprendentemente persistente. Ottimo da un ricco aperitivo a piatti complessi.', 'BIANCO', '04.jpg','10','amm'),
+
+('5', 'CERASUOLO', 'NIRO', 7, 'Il vino rosato Bisanzio è un Cerasuolo d’Abruzzo ottenuto dalla vinificazione in bianco delle uve rosse.  Di colore rosso ciliegia brillante, un bouquet piacevolmente fruttato, note di “cerasa”, sapore secco, morbido e armonico. Si abbina egregiamente a zuppe di pesce, primi di pasta, arrosti leggeri, formaggi e pizza. ', 'ROSATO', '05.jpg','12','amm'),
+
+('6', 'ROSSO DI RIGOLE', 'TOMMASELLA', 8, 'Un blend unico ottenuto da Merlot e dall’autoctono friulano Refosco.Vino di colore rosso rubino con sfumature viola, dotato di grande complessità aromatica, dalle eleganti note di frutti di bosco, lampone e leggere sfumature erbacee, tipiche del Merlot delle nostre terre.Il corpo è generoso, ricco, di buona sapidità. Al palato è morbido e persistente, con finale armonico.Si abbina perfettamente a tutti i piatti di carne rossa, costicine di agnello, radicchio di Treviso, brasati e formaggi di media stagionatura.', 'ROSSO', '06.jpg','13','amm'),
+('7', 'MERLOT', 'TOMMASELLA', 10, 'Vino dal colore rosso rubino con riflessi violacei, dalle eleganti note di piccoli frutti rossi delicati, lampone, ribes, viola fresca di campo. Di corpo medio, equilibrato, con tannini piacevolmente vellutati. Il sapore è pieno, fruttato con bella freschezza e morbidezza. Ottimo con carni alla brace, stufati di verdure, primi piatti a base di funghi e formaggi, piatti di pesce saporiti e antipasti all’Italiana.', 'ROSSO', '07.jpg','13','amm');
 
 
