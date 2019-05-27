@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2019-05-03 16:23:12
+<?php /* Smarty version 2.6.26, created on 2019-05-27 10:44:45
          compiled from ricerca_dettagli_registrato.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'string_format', 'ricerca_dettagli_registrato.tpl', 12, false),)), $this); ?>
@@ -64,7 +64,7 @@ $this->_sections['i']['last']       = ($this->_sections['i']['iteration'] == $th
                    </select>
                 <p><label for="commento" class="left">Commento:</label>
                    <textarea name="commento" id="commento" cols="45" rows="10" tabindex="5"></textarea></p>
-                   <input type="hidden" name="controller" value="ricerca" />
+                   <input type="hidden" name="controller" value="commento" task="Inserisci"/>
                    <input type="hidden" name="id_vino" value="<?php echo $this->_tpl_vars['dati']['ISBN']; ?>
 " />
                 <p><input type="submit" name="task" class="button" value="Inserisci" tabindex="6" /></p>

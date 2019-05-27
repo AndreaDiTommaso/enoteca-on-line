@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2019-04-25 12:41:45
+<?php /* Smarty version 2.6.26, created on 2019-05-20 18:29:55
          compiled from ordine_carrello.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'string_format', 'ordine_carrello.tpl', 13, false),)), $this); ?>
@@ -49,6 +49,9 @@ $this->_sections['i']['last']       = ($this->_sections['i']['iteration'] == $th
           </table>
           <input type="hidden" name="controller" value="ordine" />
           </form>
+		  <div class="pages">
+		  <a href="index.php?controller=ricerca&amp;task=lista"><h3>Continua spesa</h3></a>
+		  </div>
           <?php else: ?>
             <p>Il carrello &egrave; vuoto.</p>
           <?php endif; ?>

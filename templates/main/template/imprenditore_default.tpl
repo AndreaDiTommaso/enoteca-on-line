@@ -1,7 +1,7 @@
 		  <div class="content-1col-box">
             <form method="post" action="index.php">
 				<input id="button" type="submit" name="task" value="+ Aggiungi prodotto al catalogo" />
-				<input type="hidden" name="controller" value="ricerca"  />
+				<input type="hidden" name="controller" value="imprenditore"  />
 				<input type="hidden" name="task" value="modulo"  />
 		  </form>
 		  </div>
@@ -36,7 +36,7 @@
 			  </form>
 			  <form action="index.php" method="post">
 			  <input id="button" type="submit" name="task" value="Elimina" /> 
-			  <input type="hidden" name="controller" value="ricerca"  />
+			  <input type="hidden" name="controller" value="imprenditore"  />
               <input type="hidden" name="id_vino" value="{$dati[i].ISBN}" />
 			  <input type="hidden" name="task" value="eliminaProdotto"  />
               </form>
@@ -79,7 +79,7 @@
 			  </form>
 			  <form action="index.php" method="post">
 			  <input id="button" type="submit" name="task" value="Elimina" /> 
-			  <input type="hidden" name="controller" value="ricerca"  />
+			  <input type="hidden" name="controller" value="imprenditore"  />
               <input type="hidden" name="id_vino" value="{$dati[i].ISBN}" />
 			  <input type="hidden" name="task" value="eliminaProdotto"  />
               </form>

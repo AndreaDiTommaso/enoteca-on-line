@@ -28,7 +28,7 @@
                    </select>
                 <p><label for="commento" class="left">Commento:</label>
                    <textarea name="commento" id="commento" cols="45" rows="10" tabindex="5"></textarea></p>
-                   <input type="hidden" name="controller" value="ricerca" />
+                   <input type="hidden" name="controller" value="commento" task="Inserisci"/>
                    <input type="hidden" name="id_vino" value="{$dati.ISBN}" />
                 <p><input type="submit" name="task" class="button" value="Inserisci" tabindex="6" /></p>
               </fieldset>

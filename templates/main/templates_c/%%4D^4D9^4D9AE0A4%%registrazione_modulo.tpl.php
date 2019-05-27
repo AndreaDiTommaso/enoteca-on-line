@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2019-05-15 21:23:06
+<?php /* Smarty version 2.6.26, created on 2019-05-21 16:27:26
          compiled from registrazione_modulo.tpl */ ?>
         <a id="anchor-contact-1"></a>
         <div class="corner-content-1col-top"></div>        
@@ -27,6 +27,11 @@
                    <input type="text" name="email" id="email" class="field" value="" tabindex="14" /></p>
 				<p><label for="immagine" class="left">Immagine:</label>
                    <input type="file" name="immagine" id="immagine" class="field" tabindex="11" /></p>
+				<legend> Che tipo di utente vuoi essere?</legend>
+				<p><label for="tipo" class="left">Imprenditore:</label>
+                   <input type="radio" name="tipo" id="tipo" class="field" value="I" tabindex="11" /></p>
+				<p><label for="tipo" class="left">Utente semplice:</label>
+                   <input type="radio" name="tipo" id="tipo" class="field" value="G" tabindex="11" /></p>
                 <input type="hidden" name="controller" value="registrazione" />
                 <input type="hidden" name="task" value="salva" />
                 <p><input type="submit" name="submit" id="submit_1" class="button" value="Registrati" tabindex="15" /></p>

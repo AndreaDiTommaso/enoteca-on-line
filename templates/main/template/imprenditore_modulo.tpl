@@ -3,7 +3,7 @@
         <div class="content-1col-nobox">
           <h1 class="contact">Modulo aggiornamento catalogo</h1>
           <div class="contactform">
-            <form method="post" action="index.php" name="task" value="lista" enctype="multipart/form-data">
+            <form method="post" action="index.php" name="task" value="imprenditore" enctype="multipart/form-data">
               <fieldset><legend>&nbsp;AGGIUNGI PRODOTTO&nbsp;</legend>
                 <p><label for="ISBN" class="left">Isbn:</label>
                    <input type="text" name="ISBN" id="ISBN" class="field" tabindex="5" /></p>
@@ -21,7 +21,7 @@
                    <input type="file" name="immagine" id="immagine" class="field" tabindex="11" /></p>
                 <p><label for="gradazione" class="left">Gradazione:</label>
                    <input type="text" name="gradazione" id="gradazione" class="field" tabindex="12" /></p>
-                <input type="hidden" name="controller" value="ricerca" />
+                <input type="hidden" name="controller" value="imprenditore" />
                 <input type="hidden" name="task" value="salva" />
                 <p><input type="submit" name="submit" id="submit_1" class="button" value="Aggiungi" tabindex="15" /></p>
                </fieldset>

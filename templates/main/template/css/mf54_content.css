@@ -10,7 +10,7 @@
 .content-2col-box-leftcolumn h1, .content-2col-box-rightcolumn h1 {margin:0; padding:5px 50px 12px 20px; border-bottom:solid 1px rgb(162,192,68); background: url(../img/icon_celltitle_level1.gif) no-repeat; background-position:289px 3px; color:rgb(162,192,68); font-weight:bold; font-size:220% !important /*Non-IE6*/; font-size:200% /*IE6*/;}
 
 .content h2 {clear:both; /*Start IE Hack*/ position:relative; z-index:1; top:-1px /* End IE Hack to remove vertical -1px margin bug otherwise produced by margin*/; margin: 0 20px 0 20px; padding:15px 35px 5px 0; background: url(../img/icon_celltitle_level2.gif) no-repeat;  background-position:right 15px; color:rgb(75,75,75); font-weight:bold; font-size:180% !important /*Non-IE6*/; font-size:160% /*IE6*/;}
-.content h3 {margin:1.0em 0 -0.3em 0; padding:0 20px 0 20px; color:rgb(75,75,75); font-weight:bold; font-size:180% !important /*Non-IE6*/; font-size:160% /*IE6*/;}
+.content h3 {margin:1.0em 0 -0.3em 0; padding:0 20px 0 20px;  font-weight:bold; font-size:180% !important /*Non-IE6*/; font-size:160% /*IE6*/;}
 .content h3.line {/*Start IE Hack*/ position:relative; z-index:1; top:-1px; /* End IE Hack vertical alignment to blend top border with h1, if directly after each other*/ margin:0 20px -0.3em 20px; padding:1.0em 0 0 0; border-top:solid 1px rgb(215,215,215);}
 .content h5.line {/*Start IE Hack*/ position:relative; z-index:1; top:-1px; /* End IE Hack vertical alignment to blend top border with h1, if directly after each other*/ margin:0 20px -0.3em 20px; padding:1.0em 0 0 0; border-top:solid 1px rgb(215,215,215);}
 .content h4 {margin:1.0em 0 -0.3em 0; padding:0 20px 0 20px; color:rgb(75,75,75); font-weight:bold; font-size:160% !important /*Non-IE6*/; font-size:140% /*IE6*/;}

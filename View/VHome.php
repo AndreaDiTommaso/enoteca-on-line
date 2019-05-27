@@ -68,7 +68,20 @@ class VHome extends View {
         $this->assign('menu',$this->_main_button);
 		$this->assign('main_content',$this->_main_content);
         $this->aggiungiTastoLogout();
+		
     }
+	public function impostaPaginaImprenditore() {
+        $session=USingleton::getInstance('USession');
+        $this->assign('title','Enoteca On-line');
+		$nome_cognome=$session->leggi_valore('nome_cognome');
+        $this->assign('content_title','Benvenuto <b>'.$nome_cognome .'</b>');
+        $this->assign('menu',$this->_main_button);
+		$this->assign('main_content',$this->_main_content);
+        $this->aggiungiTastoLogout();
+		$this->aggiungiTastoImprenditore();
+		
+    }
+	
     /*
      * imposta la pagina per gli utenti non registrati/autenticati
      */
@@ -87,6 +100,14 @@ class VHome extends View {
         $tasto_logout_profilo[]=array('testo' => 'Logout', 'link' => '?controller=registrazione&task=esci');
         $this->_side_button=array_merge($tasto_logout_profilo,$this->_side_button);
     }
+	
+	public function aggiungiTastoImprenditore(){
+		$tasto_vini=array();
+		$tasto_vini[]=array('testo' => 'I miei vini', 'link' => '?controller=imprenditore&task=imprenditore');
+		$this->_side_button=array_merge($tasto_vini,$this->_side_button);
+		
+		
+	}
     /**
      * aggiunge il tasto per la registrazione nel menu laterale (per gli utenti non autenticati)
      */

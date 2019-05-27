@@ -19,6 +19,9 @@
 <form action="index.php" method="post"><input id="button" type="submit" name="task" value="Ordina" /><input type="hidden" name="controller" value="ordine" /></form>
 </td></tr>
           </table>
+		  <div class="pages">
+			<a href="index.php?controller=ricerca&amp;task=lista"><h3>Continua spesa</h3></a>
+		  </div>
           {else}
             <p>Il carrello &egrave; vuoto.</p>
           {/if}

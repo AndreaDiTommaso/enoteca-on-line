@@ -25,6 +25,11 @@
                    <input type="text" name="email" id="email" class="field" value="" tabindex="14" /></p>
 				<p><label for="immagine" class="left">Immagine:</label>
                    <input type="file" name="immagine" id="immagine" class="field" tabindex="11" /></p>
+				<legend> Che tipo di utente vuoi essere?</legend>
+				<p><label for="tipo" class="left">Imprenditore:</label>
+                   <input type="radio" name="tipo" id="tipo" class="field" value="I" tabindex="11" /></p>
+				<p><label for="tipo" class="left">Utente semplice:</label>
+                   <input type="radio" name="tipo" id="tipo" class="field" value="G" tabindex="11" /></p>
                 <input type="hidden" name="controller" value="registrazione" />
                 <input type="hidden" name="task" value="salva" />
                 <p><input type="submit" name="submit" id="submit_1" class="button" value="Registrati" tabindex="15" /></p>
