@@ -11,12 +11,7 @@ class FOrdineItem extends Fdb {
         $this->_return_class='EOrdineItem';
         USingleton::getInstance('Fdb');
     }
-    public function store(EOrdineItem & $item) {
-        $vino=$item->getVino();
-        $item->vinoISBN=$vino->ISBN;
-        $id = parent::store($item);
-        $item->id=$id;
-    }
+  
 }
 
 ?>

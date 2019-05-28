@@ -3,10 +3,10 @@
         <div class="content-1col-nobox">
           <h1 class="contact">Modulo aggiornamento catalogo</h1>
           <div class="contactform">
-            <form method="post" action="index.php" name="task" value="imprenditore" enctype="multipart/form-data">
+            <form method="post" action="index.php" name="insProd" value="imprenditore" enctype="multipart/form-data" onsubmit="return control_insProd()">
               <fieldset><legend>&nbsp;AGGIUNGI PRODOTTO&nbsp;</legend>
                 <p><label for="ISBN" class="left">Isbn:</label>
-                   <input type="text" name="ISBN" id="ISBN" class="field" tabindex="5" /></p>
+                   <input type="text" name="isbn" id="ISBN" class="field" tabindex="5" /></p>
                 <p><label for="nome" class="left">Nome:</label>
                    <input type="text" name="nome" id="nome" class="field" tabindex="6" /></p>
                 <p><label for="proprietario" class="left">Proprietario:</label>
@@ -14,7 +14,7 @@
 				<p><label for="prezzo" class="left">Prezzo:</label>
                    <input type="text" name="prezzo" id="prezzo" class="field" tabindex="8" /></p>
                 <p><label for="descrizione" class="left">Descrizione:</label>
-                   <input type="text" name="descrizione" id="descrizione" class="field" tabindex="20" /></p>
+				   <textarea name="descrizione" cols="20" rows="5"></textarea></p>
                 <p><label for="categoria" class="left">Categoria:</label>
                    <input type="text" name="categoria" id="categoria" class="field" tabindex="10" /></p>
                 <p><label for="immagine" class="left">Immagine:</label>

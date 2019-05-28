@@ -14,8 +14,11 @@ class CImprenditore{
 		$utente=$session->leggi_valore('username');
 		$parametri[]=array('utente','=',$utente);
 		$limit=$view->getPage()*$this->_vini_per_pagina.','.$this->_vini_per_pagina;
+		 if ($EVino->cerca($parametri)!=false) {
         $num_risultati=count($EVino->cerca($parametri));
         $pagine = ceil($num_risultati/$this->_vini_per_pagina);
+        }
+        else {$pagine=0;$array_risultato=NULL;}
         $risultato=$EVino->cerca($parametri, '', $limit);
         if ($risultato!=false) {
             $array_risultato=array();
@@ -59,11 +62,19 @@ class CImprenditore{
 		  $registrato=false;
         $keys=array_keys($dati_inserimento);
         $i=0;
-        foreach ($dati_inserimento as $dato) 
-        {
-        	   $EVino->$keys[$i]=$dato;
-			   $i++;
-		  }
+        
+        $EVino->ISBN=$dati_inserimento['ISBN'];
+         $EVino->nome=$dati_inserimento['nome'];
+          $EVino->proprietario=$dati_inserimento['proprietario'];
+           $EVino->prezzo=$dati_inserimento['prezzo'];
+            $EVino->descrizione=$dati_inserimento['descrizione'];
+             $EVino->categoria=$dati_inserimento['categoria'];
+              $EVino->gradazione=$dati_inserimento['gradazione'];
+               $EVino->immagine=$dati_inserimento['immagine'];
+       
+		  $session = USingleton::getInstance('USession');
+		  $username=$session->leggi_valore('username');
+		  $EVino->set_utente($username);
 		  $EVino->salva();
 		  $target_file = "C:/xampp/htdocs/progetto_enoteca/enoteca/copertine/";
 		  $uploadOk = 1;

@@ -1,0 +1,131 @@
+<?php	
+class CImprenditore{
+	
+	private $_vini_per_pagina=4;
+	
+	public  function ViniImprenditore()
+	
+	{
+		
+		$view = USingleton::getInstance('VImprenditore');
+        $EVino=new EVino();
+        $parametri=array();
+		$session=USingleton::getInstance('USession');
+		$utente=$session->leggi_valore('username');
+		$parametri[]=array('utente','=',$utente);
+		$limit=$view->getPage()*$this->_vini_per_pagina.','.$this->_vini_per_pagina;
+		 if ($EVino->cerca($parametri)!=false) {
+        $num_risultati=count($EVino->cerca($parametri));
+        $pagine = ceil($num_risultati/$this->_vini_per_pagina);
+        }
+        else {$pagine=0;$array_risultato=NULL;}
+        $risultato=$EVino->cerca($parametri, '', $limit);
+        if ($risultato!=false) {
+            $array_risultato=array();
+            foreach ($risultato as $item) {
+                $tmpVino=$EVino->carica($item->get_ISBN());
+                $array_risultato[]=array_merge(get_object_vars($tmpVino),array('media_voti'=>$tmpVino->getMediaVoti()));
+            }
+		}
+		 $view->impostaDati('pagine',$pagine);
+        $view->impostaDati('task','imprenditore');
+       // $view->impostaDati('parametri','categoria='.$categoria.'&stringa='.$parola);
+        $view->impostaDati('dati',$array_risultato);
+		/*if ($session->leggi_valore('username')==true){
+			$utente=new EUtente();
+			$utente->carica($_SESSION["username"]);
+			$tipo=$utente->get_tipo();
+			if ($tipo == 'I') {
+				
+			
+			$view->setLayout('default');
+			
+			}
+			
+		}*/
+		
+		return $view->processaTemplate(); 
+		
+		
+	}
+	
+	
+	public function moduloAggiungi() {
+    $VRicerca=USingleton::getInstance('VImprenditore');
+    $VRicerca->setLayout('modulo');
+    return $VRicerca->processaTemplate();
+    }
+	public function creaProdotto() {
+        $view=USingleton::getInstance('VImprenditore');
+        $dati_inserimento=$view->getDati();
+        $EVino=new EVino();
+		  $registrato=false;
+        $keys=array_keys($dati_inserimento);
+        $i=0;
+        
+        $EVino->ISBN=$dati_inserimento['ISBN'];
+         $EVino->nome=$dati_inserimento['nome'];
+          $EVino->proprietario=$dati_inserimento['proprietario'];
+           $EVino->prezzo=$dati_inserimento['prezzo'];
+            $EVino->descrizione=$dati_inserimento['descrizione'];
+             $EVino->categoria=$dati_inserimento['categoria'];
+              $EVino->gradazione=$dati_inserimento['gradazione'];
+               $EVino->immagine=$dati_inserimento['immagine'];
+        print_r($EVino);
+        foreach ($dati_inserimento as $dato) 
+        {
+        	   $EVino->$keys[$i]=$dato;
+			   $i++;
+		  }
+		  $session = USingleton::getInstance('USession');
+		  $username=$session->leggi_valore('username');
+		  $EVino->set_utente($username);
+		  $EVino->salva();
+		  $target_file = "C:/xampp/htdocs/progetto_enoteca/enoteca/copertine/";
+		  $uploadOk = 1;
+		  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+		  if ($uploadOk == 0) 
+			echo "Sorry, your file was not uploaded.";
+		  else {
+			if (move_uploaded_file($_FILES['immagine']['tmp_name'], $target_file . $_FILES['immagine']['name'])) {
+				echo "The file ". $_FILES['immagine']['name']. " has been uploaded.";
+			} else {
+				echo "Sorry, there was an error uploading your file.";echo "</p>";
+			}
+		}
+		$registrato=true;
+      $view->setLayout('conferma_inserimento');
+      return $view->processaTemplate();
+	}
+	public function eliminaProdotto(){
+		$view=USingleton::getInstance('VImprenditore');
+		$id_vino=$view->getIdVino();
+      $EVino=new EVino();
+      $EVino->carica($id_vino);
+		$EVino->cancella();
+		$view->setLayout('conferma_eliminazione');
+		return $view->processaTemplate();
+	}
+	
+	
+    public function smista() {
+        $view=USingleton::getInstance('VRegistrazione');
+	
+        switch ($view->getTask()) {
+          
+			case 'modulo':
+				return $this->moduloAggiungi();
+			case 'salva':
+				return $this->creaProdotto();
+			case'eliminaProdotto':
+				return $this->eliminaProdotto();
+			case 'imprenditore':
+				return $this->ViniImprenditore();
+			
+        }
+		
+	}
+}
+  
+?>
+		

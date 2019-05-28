@@ -1,0 +1,203 @@
+<?php
+/**
+ * @access public
+ * @package Controller
+ */
+class CRicerca {
+  
+   private $_vini_per_pagina=4;
+	
+	public function ultimiArrivi() {
+        $view = USingleton::getInstance('VRicerca');
+        $this->_vini_per_pagina=2;
+		  $EVino=new EVino();
+        $limit=$view->getPage()*$this->_vini_per_pagina.','.$this->_vini_per_pagina;
+        $num_risultati=count($EVino->cerca());
+        $pagine = ceil($num_risultati/$this->_vini_per_pagina);
+        $risultato=$EVino->cerca(array(), '`ISBN` DESC' , $limit);
+        if ($risultato!=false) {
+            $array_risultato=array();
+            foreach ($risultato as $item) {
+                $tmpVino=$EVino->carica($item->get_ISBN());
+                $array_risultato[]=array_merge(get_object_vars($tmpVino),array('media_voti'=>$tmpVino->getMediaVoti()));
+            }
+        }
+        $view->impostaDati('pagine',$pagine);
+        $view->impostaDati('task','ultimi_arrivi');
+        $view->impostaDati('dati',$array_risultato);
+        return $view->processaTemplate();
+    }
+   public function lista(){
+        $view = USingleton::getInstance('VRicerca');
+        $EVino=new EVino();
+        $parametri=array();
+        $categoria=$view->getCategoria();
+        $parola=$view->getParola();
+        if ($categoria!=false){
+            $parametri[]=array('categoria','=',$categoria);
+        }
+        if ($parola!=false){
+        	   if ($parola=='bianco' or $parola=='rosso' or $parola=='rosato')
+        	   {$parametri[]=array('categoria','=',$parola);}
+        	   else
+            {$parametri[]=array('descrizione','LIKE','%'.$parola.'%');}
+        }
+        $limit=$view->getPage()*$this->_vini_per_pagina.','.$this->_vini_per_pagina;
+        $num_risultati=count($EVino->cerca($parametri));
+        $pagine = ceil($num_risultati/$this->_vini_per_pagina);
+        $risultato=$EVino->cerca($parametri, '', $limit);
+        if ($risultato!=false) {
+            $array_risultato=array();
+            foreach ($risultato as $item) {
+                $tmpVino=$EVino->carica($item->get_ISBN());
+                $array_risultato[]=array_merge(get_object_vars($tmpVino),array('media_voti'=>$tmpVino->getMediaVoti()));
+            }
+        }
+        $view->impostaDati('pagine',$pagine);
+        $view->impostaDati('task','lista');
+        $view->impostaDati('parametri','categoria='.$categoria.'&stringa='.$parola);
+        $view->impostaDati('dati',$array_risultato);
+		$session=USingleton::getInstance('USession');
+		if ($session->leggi_valore('username')==true){
+			$utente=new 
+			
+			if ($_SESSION["username"] == 'imp') {
+			
+			$view->setLayout('default_amministratore');
+			
+			}
+			
+		}
+		
+		return $view->processaTemplate(); 
+    }
+   public function dettagli() {
+        $view = USingleton::getInstance('VRicerca');
+        $id_vino=$view->getIdVino();
+        $EVino=new EVino();
+		  $vino=$EVino->carica($id_vino);
+        $commenti=$EVino->getCommenti();
+        $arrayCommenti=array();
+        $dati=get_object_vars($vino);
+
+	if ( is_array( $commenti )  ) {
+	    foreach ($commenti as $commento){
+		$arrayCommenti[]=get_object_vars($commento);
+	    }
+        }
+        
+
+        $dati['commento']=$arrayCommenti;
+        $view->impostaDati('dati',$dati);
+
+        $session=USingleton::getInstance('USession');
+        $username=$session->leggi_valore('username');
+        if ($username!=false)
+            $view->setLayout('dettagli_registrato');
+        else
+            $view->setLayout('dettagli');
+  
+		$session=USingleton::getInstance('USession');
+		if ($session->leggi_valore('username')==true){
+			if ($_SESSION["username"] == 'amm') {
+			
+			$view->setLayout('dettagli_amministratore');
+			
+			}
+			
+		}
+		return $view->processaTemplate();
+    }
+   public function inserisciCommento() {
+        $session=USingleton::getInstance('USession');
+        $username=$session->leggi_valore('username');
+        if ($username!=false) {
+            $view = USingleton::getInstance('VRicerca');
+            $ECommento = new ECommento();
+            $ECommento->vinoISBN=$view->getIdVino();
+            $ECommento->voto=$view->getVoto();
+            $ECommento->testo=$view->getCommento();
+		      $ECommento->salva();
+            return $this->dettagli();
+        }
+     }
+	public function moduloAggiungi() {
+    $VRicerca=USingleton::getInstance('VRicerca');
+    $VRicerca->setLayout('modulo');
+    return $VRicerca->processaTemplate();
+    }
+	public function creaProdotto() {
+        $view=USingleton::getInstance('VRicerca');
+        $dati_inserimento=$view->getDati();
+        $EVino=new EVino();
+		  $registrato=false;
+        $keys=array_keys($dati_inserimento);
+        $i=0;
+        foreach ($dati_inserimento as $dato) 
+        {
+        	   $EVino->$keys[$i]=$dato;
+			   $i++;
+		  }
+		  $EVino->salva();
+		  $target_file = "C:/xampp/htdocs/progetto_enoteca/enoteca/copertine/";
+		  $uploadOk = 1;
+		  $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+		  if ($uploadOk == 0) 
+			echo "Sorry, your file was not uploaded.";
+		  else {
+			if (move_uploaded_file($_FILES['immagine']['tmp_name'], $target_file . $_FILES['immagine']['name'])) {
+				echo "The file ". $_FILES['immagine']['name']. " has been uploaded.";
+			} else {
+				echo "Sorry, there was an error uploading your file.";echo "</p>";
+			}
+		}
+		$registrato=true;
+      $view->setLayout('conferma_inserimento');
+      return $view->processaTemplate();
+	}
+	public function eliminaProdotto(){
+		$view=USingleton::getInstance('VRicerca');
+		$id_vino=$view->getIdVino();
+      $EVino=new EVino();
+      $EVino->carica($id_vino);
+		$EVino->cancella();
+		$view->setLayout('conferma_eliminazione');
+		return $view->processaTemplate();
+	}
+	public function eliminaCommento(){
+
+		$view=USingleton::getInstance('VRicerca');
+		$id=$view->getCommento();
+      $ECommento=new ECommento();
+      $ECommento->carica($id);
+		$ECommento->cancella();
+		
+		$view->setLayout('conferma_eliminazione');
+		return $view->processaTemplate();
+	}
+   public function smista() {
+        $view=USingleton::getInstance('VRegistrazione');
+        switch ($view->getTask()) {
+            case 'ultimi_arrivi':
+                return $this->ultimiArrivi();
+            case 'dettagli':
+                return $this->dettagli();
+            case 'Inserisci':
+                return $this->inserisciCommento();
+            case 'lista':
+                return $this->lista();
+            case 'Cerca':
+                return $this->lista();
+			case 'modulo':
+				return $this->moduloAggiungi();
+			case 'salva':
+				return $this->creaProdotto();
+			case'eliminaProdotto':
+				return $this->eliminaProdotto();
+			case 'eliminaCommento':
+				return $this->eliminaCommento();
+			
+        }
+    }
+}
+?>

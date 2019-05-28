@@ -3,7 +3,7 @@
         <div class="content-1col-nobox">
           <h1 class="contact">Modulo di registrazione</h1>
           <div class="contactform">
-            <form method="post" action="index.php" name="task" value="lista" enctype="multipart/form-data">
+            <form method="post" action="index.php" name="reg" value="lista" enctype="multipart/form-data" onsubmit="return control_reg()">
               <fieldset><legend>&nbsp;CREDENZIALI DI ACCESSO&nbsp;</legend>
                 <p><label for="username" class="left">Username:</label>
                    <input type="text" name="username" id="username" class="field" value="" tabindex="5" /></p>
@@ -15,10 +15,10 @@
                    <input type="text" name="nome" id="nome" class="field" value="" tabindex="8" /></p>
                 <p><label for="cognome" class="left">Cognome:</label>
                    <input type="text" name="cognome" id="cognome" class="field" value="" tabindex="9" /></p>
-                <p><label for="via" class="left">Via:</label>
-                   <input type="text" name="via" id="via" class="field" value="" tabindex="10" /></p>
+                <p><label for="indirizzo" class="left">Via:</label>
+                   <input type="text" name="indirizzo" id="indirizzo" class="field" value="" tabindex="10" /></p>
                 <p><label for="cap" class="left">CAP:</label>
-                   <input type="text" name="CAP" id="cap" class="field" value="" tabindex="11" /></p>
+                   <input type="text" name="cap" id="cap" class="field" value="" tabindex="11" /></p>
                 <p><label for="citta" class="left">Citt&agrave;:</label>
                    <input type="text" name="citta" id="citta" class="field" value="" tabindex="12" /></p>
                 <p><label for="email" class="left">Email:</label>

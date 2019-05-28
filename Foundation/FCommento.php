@@ -11,18 +11,9 @@ class FCommento extends Fdb {
         $this->_return_class='ECommento';
         USingleton::getInstance('Fdb');
     }
-
-    public function store( $object){
-        $id = parent::store($object);
-        $object->id=$id;
-    }
-
-    public function loadCommenti($vinoISBN){
-        $parametri=array();
-        $parametri[]=array('vinoISBN','=',$vinoISBN);
-        $arrayCommenti=parent::search($parametri);
-        return $arrayCommenti;
-    }
+	
+	
+	
 }
 
 ?>

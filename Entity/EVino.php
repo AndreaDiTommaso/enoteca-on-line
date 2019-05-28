@@ -11,8 +11,8 @@ class EVino {
     public $descrizione;
     public $categoria;
     public $immagine;
-	 public $gradazione;
-	 public $utente;
+	public $gradazione;
+	public $utente;
 	 
 	 
 	 public $_commento = array();
@@ -74,7 +74,7 @@ class EVino {
         else
             return false;
     }
-    public function carica(int $dati){
+    public function carica($dati){
 		$FVino=new FVino();
       $result=$FVino->load($dati);
 		if($result!=false)

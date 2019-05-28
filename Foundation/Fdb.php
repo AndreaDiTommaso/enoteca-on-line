@@ -61,14 +61,15 @@ class Fdb {
         if(!$this->_connection)
             $this->_connection=USingleton::getInstance('Fdb')->getLink();
         $this->_result=$this->_connection->query($query);
+		
         debug($query);
         debug($this->_connection->error);
-        if (!$this->_result)
-         
-            return false;
+        if ($this->_result!=false)
+			
+			  return true;
         else
-        
-            return true;
+        return false;
+          
     }
     /**
      * Restituisce il risultato in un array associativo
@@ -170,7 +171,12 @@ class Fdb {
             }
         }
         $query='INSERT INTO '.$this->_table.' ('.$fields.') VALUES ('.$values.')';
-        $return = $this->query($query);
+      
+		
+        $return=$this->query($query);
+
+		 
+		
         if ($this->_auto_increment) {
             $query='SELECT LAST_INSERT_ID() AS `id`';
             $this->query($query);

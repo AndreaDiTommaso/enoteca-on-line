@@ -90,8 +90,8 @@ CREATE TABLE `ordineitem` (
 
 
 
-INSERT INTO `utente` (`username`, `nome`, `cognome`, `password`, `email`, `via`, `codice_attivazione`, `stato`, `citta`, `immagine`, `CAP`, `tipo`) VALUES ('amm', 'amministratore', 'supremo', 'a', '', NULL, NULL, NULL, NULL, NULL, NULL, 'A');
-INSERT INTO `utente` (`username`, `nome`, `cognome`, `password`, `email`, `via`, `codice_attivazione`, `stato`, `citta`, `immagine`, `CAP`, `tipo`) VALUES ('imp', 'imprenditore', 'uno', 'i', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'I');
+INSERT INTO `utente` (`username`, `nome`, `cognome`, `password`, `email`, `via`, `codice_attivazione`, `stato`, `citta`, `immagine`, `CAP`, `tipo`) VALUES ('amm', 'amministratore', 'supremo', 'a', '', NULL, NULL, 'attivo', NULL, NULL, NULL, 'A');
+INSERT INTO `utente` (`username`, `nome`, `cognome`, `password`, `email`, `via`, `codice_attivazione`, `stato`, `citta`, `immagine`, `CAP`, `tipo`) VALUES ('imp', 'imprenditore', 'uno', 'i', NULL, NULL, NULL, 'attivo', NULL, NULL, NULL, 'I');
 INSERT INTO `vino` (`ISBN`, `nome`, `proprietario`, `prezzo`, `descrizione`, `categoria`, `immagine`,`gradazione`,`utente`) VALUES
 ('1', 'MONTEPULCIANO', 'NIRO', 6, 'Vino di colore rosso intenso, profumi di frutta a bacca rossa e note di spezie. Sapore pieno, armonico e giustamente tannico. Si abbina egregiamente a primi di pasta, carni rosse, cacciagione e formaggi stagionati.', 'ROSSO', '01.jpg','12','imp'),
 

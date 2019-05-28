@@ -15,7 +15,7 @@ class EOrdineItem {
     public $vino;
     public $ordineID;
     
-    public function set_vino(int $x) {$this->vino=$x;}
+    public function set_vino($x) {$this->vino=$x;}
     public function set_quantita($x) {$this->quantita=$x;}
     public function set_id($x) {$this->id=$x;}
     public function set_ordineID($x) {$this->ordineID=$x;}
