@@ -100,7 +100,7 @@ class EUtente {
 	}
 	public function salva(){
 		
-		$FUtente=new FUtente();
+      $FUtente=new FUtente();
 		$bool=$FUtente->store($this);
 		return $bool;
 	}

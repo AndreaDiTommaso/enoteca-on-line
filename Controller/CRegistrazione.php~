@@ -1,5 +1,5 @@
 <?php
-/**ff
+/**
  * @access public
  * @package Controller
  */
@@ -104,7 +104,7 @@ class CRegistrazione {
 				if ($dati_registrazione['tipo'] == 'o')
 					$utente->set_tipo('I');
                     $utente->salva();
-				    $target_file = "C:/xampp/htdocs/progetto_enoteca/enoteca/copertine/";
+				    $target_file = "copertine/";
 				    $uploadOk = 1;
 				    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 		
@@ -165,7 +165,8 @@ class CRegistrazione {
 		  if ($dati_attivazione!=false) {
 			
             if ($utente->getCodiceAttivazione()==$dati_attivazione['codice']) {
-                $utente->stato='attivo';
+                $utente->stato='attivo';print_r( $utente->stato);
+                
 				    $utente->aggiorna();
                 $view->setLayout('conferma_attivazione');
             } else {

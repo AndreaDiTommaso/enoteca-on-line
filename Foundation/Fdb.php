@@ -160,6 +160,7 @@ class Fdb {
         $fields='';
         foreach ($object as $key=>$value) {
             if (!($this->_auto_increment && $key == $this->_key) && substr($key, 0, 1)!='_') {
+            	$value=str_replace('\'', '\\\'', $value);
                 if ($i==0) {
                     $fields.='`'.$key.'`';
                     $values.='\''.$value.'\'';
@@ -232,6 +233,8 @@ class Fdb {
         $fields='';
         foreach ($object as $key=>$value) {
             if (!($key == $this->_key) && substr($key, 0, 1)!='_') {
+            	
+                $value=str_replace('\'', '\\\'', $value);
                 if ($i==0) {
                     $fields.='`'.$key.'` = \''.$value.'\'';
                 } else {

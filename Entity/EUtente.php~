@@ -100,6 +100,11 @@ class EUtente {
 	}
 	public function salva(){
 		
+                $citta=$this->get_citta();
+                $citta=str_replace('\'', '\\\'', $citta);
+                $this->set_citta($citta);
+                print_r($this->citta);
+		
 		$FUtente=new FUtente();
 		$bool=$FUtente->store($this);
 		return $bool;

@@ -104,7 +104,7 @@ class CRegistrazione {
 				if ($dati_registrazione['tipo'] == 'o')
 					$utente->set_tipo('I');
                     $utente->salva();
-				    $target_file = "C:/xampp/htdocs/progetto_enoteca/enoteca/copertine/";
+				    $target_file = "copertine/";
 				    $uploadOk = 1;
 				    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 		

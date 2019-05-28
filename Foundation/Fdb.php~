@@ -192,7 +192,7 @@ class Fdb {
      * @param mixed $key
      * @return boolean
      */
-    public function load(string $key) {
+    public function load($key) {
         $query='SELECT * ' .
                 'FROM `'.$this->_table.'` ' .
                 'WHERE `'.$this->_key.'` = \''.$key.'\'';
@@ -232,6 +232,8 @@ class Fdb {
         $fields='';
         foreach ($object as $key=>$value) {
             if (!($key == $this->_key) && substr($key, 0, 1)!='_') {
+            	
+                $value=str_replace('\'', '\\\'', $value);
                 if ($i==0) {
                     $fields.='`'.$key.'` = \''.$value.'\'';
                 } else {
