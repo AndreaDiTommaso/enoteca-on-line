@@ -43,12 +43,19 @@ class ECartaCredito {
             return false;
     }
    
-  
+/**
+ * aggiunge una carta di credito nel db
+ * 
+ */
    public function salva(){
       $carta=new FCartaCredito();
 		$bool=$carta->store($this);
 		return $bool;
 		}
+/**
+ * carica tutti gli attributi di un istanza con dati presi dal db
+ * 
+ */
 	public function carica ($key){
 
 		$FCartaCredito=new FCartaCredito();
@@ -57,11 +64,19 @@ class ECartaCredito {
 	   return $result; 
 		
 	}
+	/**
+ * aggiorna con i propri attributi i dati salvati nel db relativi a quella carta di credito
+ * 
+ */
 	public function aggiorna(){	
 	   $FCartaCredito=new FCartaCredito();
 		$FCartaCredito->update($this);
 		return $FCartaCredito;
 	}
+/**
+ * cancella una carta di credito dal db
+ * 
+ */
 	public function cancella(){
 		$FCartaCredito=new FCartaCredito();
 		$bool=$FCartaCredito->delete($this);
@@ -69,6 +84,9 @@ class ECartaCredito {
 		return $bool;
 		
 	}
+/**
+ * copia gli attributi di un oggetto Ecartadicredito
+ */ 
 	public function autoload ($object){
 	
 	   $this->set_nome_titolare($object->get_nome_titolare());

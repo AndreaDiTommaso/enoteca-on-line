@@ -1,4 +1,6 @@
-<?php
+/**
+ * copia gli attributi di un oggetto Evino
+ */<?php
 
 /**
  * @access public
@@ -23,7 +25,7 @@ class EOrdine {
     public function get_utente() {return $this->utente;}
     public function get_cartacredito() {return $this->cartacredito;}
    
-   //public function set_data( $x){ $this->data=$x;} 
+   
    public function set_id(int $x){ $this->id=$x;}
    public function set_pagato($pagato) {$this->pagato=$pagato;}
    public function set_confermato($confermato) {$this->confermato=$confermato;}
@@ -36,7 +38,9 @@ class EOrdine {
         $this->data="$anno-$mese-$giorno";
     }
     
-
+/**
+ * copia gli attributi di un oggetto Eordine
+ */ 
 	
   public function autoload ($object){
 	
@@ -83,11 +87,19 @@ class EOrdine {
         unset($this->_item[$pos]);
         $this->_item=array_values($this->_item);
     }
+/**
+ * aggiorna con i propri attributi i dati salvati nel db relativi a quel ordine
+ * 
+ */
   public function aggiorna(){
 		$FOrdine=new FOrdine();
 		$FOrdine->update($this);
 		return $FOrdine;
 	}
+/**
+ * aggiunge un ordine nel db
+ * 
+ */
   public function salva(){
       $FOrdine=new FOrdine();
 		$bool=$FOrdine->store($this);
@@ -102,6 +114,10 @@ class EOrdine {
 		return $bool;
 		 
     }
+    /**
+ * carica tutti gli attributi di un istanza con dati presi dal db
+ * 
+ */
   public function carica($key){    
  
        

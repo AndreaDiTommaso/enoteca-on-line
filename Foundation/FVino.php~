@@ -10,36 +10,6 @@ class FVino extends Fdb {
         $this->_return_class='EVino';
         USingleton::getInstance('Fdb');
     }
-  /*  public function store( $vino) {
-        parent::store($vino);
-        $FCommento=new FCommento();
-        $arrayCommentiEsistenti=$FCommento->loadCommenti($vino->ISBN);
-        if ($arrayCommentiEsistenti!=false) {
-            foreach ($arrayCommentiEsistenti as $itemCommento) {
-                $FCommento->delete($itemCommento);
-            }
-        }
-        $arrayCommenti=$vino->getCommenti();
-        foreach ($arrayCommenti as &$commento) {
-            $commento->vinoISBN=$vino->ISBN;
-            $FCommento->store($commento);
-        }
-    }*/
-   /* public function load ($key) {
-        $vino=parent::load($key);
-        $FCommento=new FCommento();
-        $arrayCommenti=$FCommento->loadCommenti($vino->ISBN);
-        $vino->_commento=$arrayCommenti;
-        return $vino;
-    }*/
-	 /*public function delete( & $vino) {
-        $arrayCommenti=& $vino->getCommenti();
-        $FCommento= new FCommento();
-        foreach ($arrayCommenti as &$commento) {
-            $FCommento->delete($commento);
-        }
-        parent::delete($vino);
-    }*/
     public function getCategorie(){
         $query='SELECT DISTINCT `categoria` ' .
                 'FROM `vino` ';
@@ -48,10 +18,7 @@ class FVino extends Fdb {
 		
     }
 	
-	/*public function deleteProd($vino){
-		$nome_vino=$vino->get_ISBN();
-        $query='DELETE FROM `vino` WHERE ISBN ='.$nome_vino;
-        $this->query($query);*/
+	
 		
     }
 	

@@ -23,7 +23,7 @@ class ECartaCredito {
     }
     public function set_numero($x) {$this->numero=$x;}
     public function set_ccv($x) {$this->ccv=$x;}
-    public function set_numero($x) {$this->numero=$x;}
+    public function set_utente($x) {$this->utente=$x;}
    
     public function get_nome_titolare() {return $this->nome_titolare;}
     public function get_cognome_titolare() {return $this->cognome_titolare;}
@@ -43,12 +43,19 @@ class ECartaCredito {
             return false;
     }
    
-  
+/**
+ * aggiunge una carta di credito nel db
+ * 
+ */
    public function salva(){
       $carta=new FCartaCredito();
 		$bool=$carta->store($this);
 		return $bool;
 		}
+/**
+ * carica tutti gli attributi di un istanza con dati presi dal db
+ * 
+ */
 	public function carica ($key){
 
 		$FCartaCredito=new FCartaCredito();
@@ -57,6 +64,10 @@ class ECartaCredito {
 	   return $result; 
 		
 	}
+	/**
+ * aggiorna con i propri attributi i dati salvati nel db relativi a quella carta di credito
+ * 
+ */
 	public function aggiorna(){	
 	   $FCartaCredito=new FCartaCredito();
 		$FCartaCredito->update($this);
@@ -69,6 +80,9 @@ class ECartaCredito {
 		return $bool;
 		
 	}
+/**
+ * copia gli attributi di un oggetto Ecartadicredito
+ */ 
 	public function autoload ($object){
 	
 	   $this->set_nome_titolare($object->get_nome_titolare());

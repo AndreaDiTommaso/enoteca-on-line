@@ -12,7 +12,9 @@ class FOrdine extends Fdb{
         USingleton::getInstance('Fdb');
     }
   
-  
+  /**
+   * restituisce l'id dell'ultimo ordine effettuato
+   */
     public function ultimoid()
     {
     	$somma=0;

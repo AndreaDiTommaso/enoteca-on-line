@@ -42,7 +42,9 @@ class EVino {
     public function set_utente( $x){$this->utente=$x;}
     public function addCommento(ECommento $commento) {array_push($this->_commento, $commento);}
 
-    
+/**
+ * copia gli attributi di un oggetto Evino
+ */ 
     
 	 public function autoload ($object){
 	 	
@@ -58,6 +60,10 @@ class EVino {
 	
 		
 	}
+/**
+ * restituisce la media dei voti di un vino
+ * 
+ */
     public function getMediaVoti() {
         $somma=0;
         $voti=0;
@@ -74,6 +80,10 @@ class EVino {
         else
             return false;
     }
+/**
+ * carica tutti gli attributi di un istanza con dati presi dal db
+ * 
+ */
     public function carica($dati){
 		$FVino=new FVino();
       $result=$FVino->load($dati);
@@ -88,11 +98,19 @@ class EVino {
 		return $result; 
 		
 	}
+/**
+ * aggiorna con i propri attributi i dati salvati nel db relativi a quel vino
+ * 
+ */
 	 public function aggiorna(){
 		$FVino=new FVino();
 		$FVino->update($this);
 		return $FVino;
 	}
+/**
+ * aggiunge un vino nel db
+ * 
+ */
 	 public function salva(){
 		$FVino=new FVino();
 		$bool=$FVino->store($this);
@@ -100,6 +118,10 @@ class EVino {
 		return $bool;
 		
 	}
+/**
+ * cancella un vino dal db
+ * 
+ */
 	 public function cancella(){
 		$FVino=new FVino();
 		$bool=$FVino->delete($this);
@@ -116,6 +138,10 @@ class EVino {
 		return $bool;
 		
 	}
+/**
+ * effettua una ricerca nel db
+ * 
+ */
 	 public function cerca($parametri = array(), $ordinamento = '', $limit=''){
 	
         $FVino=new FVino();

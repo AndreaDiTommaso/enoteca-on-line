@@ -10,6 +10,9 @@ class FVino extends Fdb {
         $this->_return_class='EVino';
         USingleton::getInstance('Fdb');
     }
+    /**
+     * restituisce tutti i vini che hanno la stessa categoria
+     */
     public function getCategorie(){
         $query='SELECT DISTINCT `categoria` ' .
                 'FROM `vino` ';

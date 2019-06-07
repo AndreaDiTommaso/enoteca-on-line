@@ -46,6 +46,9 @@ class EUtente {
 	
 	
     public $_ordini = array();
+    /**
+ * copia gli attributi di un oggetto Eutente
+ */ 
 	
 	public function autoload ($object){
 	
@@ -81,6 +84,10 @@ class EUtente {
    public function getCodiceAttivazione() {
         return $this->codice_attivazione;
     }
+ /**
+ * carica tutti gli attributi di un istanza con dati presi dal db
+ * 
+ */
 	public function carica ($dati_registrazione){
 
 		$FUtente=new FUtente();
@@ -93,11 +100,19 @@ class EUtente {
 		return $result; 
 		
 	}
+/**
+ * aggiorna con i propri attributi i dati salvati nel db relativi a quel utente
+ * 
+ */
 	public function aggiorna(){
 		$FUtente=new FUtente();
 		$FUtente->update($this);
 		return $FUtente;
 	}
+/**
+ * aggiunge un utente nel db
+ * 
+ */
 	public function salva(){
 		
       $FUtente=new FUtente();

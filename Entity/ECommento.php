@@ -20,6 +20,9 @@ class ECommento {
     public function set_id( $x){ $this->id=$x;}
     public function set_testo( $x){$this->testo=$x;}
     public function set_voto( $x){$this->voto=$x;}
+    /**
+ * copia gli attributi di un oggetto Ecommento
+ */ 
 	
 	public function autoload ($object){
 	
@@ -29,6 +32,10 @@ class ECommento {
 		$this->set_vinoISBN($object->get_vinoISBN());
 		
 	}
+	/**
+ * carica tutti gli attributi di un istanza con dati presi dal db
+ * 
+ */
 	public function carica($dati){
 
 		$FCommento=new FCommento();
@@ -39,16 +46,28 @@ class ECommento {
 		{$this->set_id($dati);}
 		return $result; 
 	}
+/**
+ * aggiorna con i propri attributi i dati salvati nel db relativi a quel commento
+ * 
+ */
 	public function aggiorna(){
 		$FCommento=new FCommento();
 		$FCommento->update($this);
 		return $FCommento;
 	}
+/**
+ * aggiunge un commento nel db
+ * 
+ */
 	public function salva(){
 		$FCommento=new FCommento();
 		$bool=$FCommento->store($this);
 		return $bool;
 	}
+/**
+ * cancella un commento dal db
+ * 
+ */
 	public function cancella(){
 		$FCommento=new FCommento();
 		$bool=$FCommento->delete($this);

@@ -24,12 +24,20 @@ class EOrdineItem {
     public function get_id() {return $this->id;}
     public function get_quantita() {return $this->quantita;}
     public function get_ordineID() {return $this->ordineID;}
-     
+/**
+ * aggiunge un ordineitem nel db
+ * 
+ */  
    public function salva(){  
       $item=new FOrdineItem();
 		$bool=$item->store($this);
 	   return $bool;
-	  }   public function carica ($key){
+	  } 
+/**
+ * carica tutti gli attributi di un istanza con dati presi dal db
+ * 
+ */  
+	  public function carica ($key){
 
 		$FOrdineItem=new FOrdineItem();
       $result=$FOrdineItem->load($key);
@@ -39,6 +47,10 @@ class EOrdineItem {
 		return $result; 
 		
 	}
+	/**
+ * aggiorna con i propri attributi i dati salvati nel db relativi a quel ordineitem
+ * 
+ */
 	public function aggiorna(){	
 	
 	
@@ -47,6 +59,10 @@ class EOrdineItem {
 		$FOrdineItem->update($this);
 		return $FOrdineItem;
 	}
+/**
+ * cancella un ordineitem dal db
+ * 
+ */
 	public function cancella(){
 		$FOrdineItem=new FOrdineItem();
 		$bool=$FOrdineItem->delete($this);
@@ -54,6 +70,9 @@ class EOrdineItem {
 		return $bool;
 		
 	}
+/**
+ * copia gli attributi di un oggetto Eordineitem
+ */ 
 	public function autoload ($object){
 	
 	   $this->set_id($object->get_id());

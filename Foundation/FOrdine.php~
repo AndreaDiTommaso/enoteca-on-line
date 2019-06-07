@@ -11,19 +11,7 @@ class FOrdine extends Fdb{
         $this->_return_class='EOrdine';
         USingleton::getInstance('Fdb');
     }
-  /* public function store(EOrdine & $ordine){
-        $FCartaCredito=new FCartaCredito();
-        $FCartaCredito->store($ordine->_cartacredito);
-        $ordine->cartaCreditoNumero=$ordine->_cartacredito->numero;
-        $ordine->utenteusername=$ordine->_utente->username;
-        $FOrdineItem=new FOrdineItem();
-        $id = parent::store($ordine);
-        foreach ($ordine->_item as &$item){
-            $item->ordineID=$id;
-            $FOrdineItem->store($item);
-        }
-        $ordine->id=$id;
-    }*/
+  
   
     public function ultimoid()
     {
