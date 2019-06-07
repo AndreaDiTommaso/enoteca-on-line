@@ -82,8 +82,8 @@
                 {/if}
                 </li>
         {/section}
-      </ul>                       
-    </div>    
+      </ul> 	  
+    </div> 
   
     <!-- C. MAIN SECTION -->      
     <div class="main">
@@ -91,6 +91,8 @@
 
       <!-- C.1 CONTENT -->
       <div class="content">
+		
+		
         {$main_content}
       </div>
       
@@ -101,6 +103,7 @@
     
     <!-- D. FOOTER -->      
     <div class="footer">
+	  
       <p>Copyright &copy; 2019 EnotecaOnline&nbsp;&nbsp;|&nbsp;&nbsp;All Rights Reserved</p>
       
     </div>

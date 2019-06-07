@@ -1,8 +1,16 @@
-<?php /* Smarty version 2.6.26, created on 2019-05-27 18:20:41
+<?php /* Smarty version 2.6.26, created on 2019-06-07 18:22:24
          compiled from ricerca_default.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('modifier', 'string_format', 'ricerca_default.tpl', 22, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('modifier', 'string_format', 'ricerca_default.tpl', 30, false),)), $this); ?>
           <div class="content-1col-box">
+		 <p><img height="350" width="925" src="templates\main\template\img\home.png" alt="immagine_home" title="immagine_home"></p>
+          
+			    <p class="details">
+				<h1> La nostra storia </h1>
+				
+				<h4> Creato nel 2018, il sito Enoteca On-line, riunisce vini di molte cantine, tutte italiane.</h5>
+		
+		  </p>
           <!-- Subcell LEFT -->
           <div class="content-2col-box-leftcolumn">
             <?php if ($this->_tpl_vars['dati'] != false): ?>
@@ -226,6 +234,8 @@ $this->_sections['pages']['last']       = ($this->_sections['pages']['iteration'
         <div class="content-1col-nobox">
             <h2 class="pages">
 				<a href="index.php?controller=ricerca&task=lista">Vai al catalogo</a></h2>
+				        
+			
 				</div>
            
        

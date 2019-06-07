@@ -28,6 +28,8 @@ class CHome {
 		
         $VHome->mostraPagina();
     }
+	
+	
     /**
      * Smista le richieste ai vari controller
      *
@@ -54,8 +56,7 @@ class CHome {
                 return $CCommento->smista();
 			default:
                 $CRicerca=USingleton::getInstance('CRicerca');
-                return $CRicerca->ultimiArrivi();
-
+				return $CRicerca->ultimiArrivi();
             
         }
     }

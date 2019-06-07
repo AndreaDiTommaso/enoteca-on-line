@@ -1,4 +1,12 @@
           <div class="content-1col-box">
+		 <p><img height="350" width="925" src="templates\main\template\img\home.png" alt="immagine_home" title="immagine_home"></p>
+          
+			    <p class="details">
+				<h1> La nostra storia </h1>
+				
+				<h4> Creato nel 2018, il sito Enoteca On-line, riunisce vini di molte cantine, tutte italiane.</h5>
+		
+		  </p>
           <!-- Subcell LEFT -->
           <div class="content-2col-box-leftcolumn">
             {if $dati != false}
@@ -85,6 +93,8 @@
         <div class="content-1col-nobox">
             <h2 class="pages">
 				<a href="index.php?controller=ricerca&task=lista">Vai al catalogo</a></h2>
+				        
+			
 				</div>
            
        

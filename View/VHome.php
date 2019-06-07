@@ -118,6 +118,7 @@ class VHome extends View {
 		$menu_registrazione[]=array('testo' => 'Registrati', 'link' => '?controller=registrazione&task=registra');
 		$this->_side_button[]=array_merge(array('testo' => 'Login', 'link' => '?controller=registrazione&task=login', 'submenu' => $menu_registrazione, 'submenu2'=>$menu_registrazione2),$this->_side_button);
     }
+
    	
 }
 

@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.26, created on 2019-05-27 17:23:04
+<?php /* Smarty version 2.6.26, created on 2019-06-07 17:20:27
          compiled from home_default.tpl */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
@@ -187,8 +187,8 @@ $this->_sections['j']['last']       = ($this->_sections['j']['iteration'] == $th
                 <?php endif; ?>
                 </li>
         <?php endfor; endif; ?>
-      </ul>                       
-    </div>    
+      </ul> 	  
+    </div> 
   
     <!-- C. MAIN SECTION -->      
     <div class="main">
@@ -196,6 +196,8 @@ $this->_sections['j']['last']       = ($this->_sections['j']['iteration'] == $th
 
       <!-- C.1 CONTENT -->
       <div class="content">
+		
+		
         <?php echo $this->_tpl_vars['main_content']; ?>
 
       </div>
@@ -207,6 +209,7 @@ $this->_sections['j']['last']       = ($this->_sections['j']['iteration'] == $th
     
     <!-- D. FOOTER -->      
     <div class="footer">
+	  
       <p>Copyright &copy; 2019 EnotecaOnline&nbsp;&nbsp;|&nbsp;&nbsp;All Rights Reserved</p>
       
     </div>
